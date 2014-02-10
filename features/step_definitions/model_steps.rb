@@ -21,7 +21,10 @@ Then(/^a (\w+) should have logged out$/) do |model|
   current_url.should == new_user_session_url
 end
 
-
+Then(/^A (\w+) should have been created with: ("[a-z_]+": ".+")$/) do |model, attributes|
+	attributes = attributize_string(attributes)
+	visit wikis_url
+end
 
 
 def attributize_string(string)

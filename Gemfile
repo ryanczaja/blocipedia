@@ -17,6 +17,7 @@ end
 gem 'devise'
 gem 'redcarpet'
 gem 'faker'
+gem 'cancan'
 
 
 # Gems used only for assets and not required
@@ -45,6 +46,7 @@ end
 
 group :test, :develoment do
 	gem 'factory_girl_rails'
+	gem 'pry-debugger'
 end
 
 # To use ActiveModel has_secure_password
