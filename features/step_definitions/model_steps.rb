@@ -26,6 +26,9 @@ Then(/^A (\w+) should have been created with: ("[a-z_]+": ".+")$/) do |model, at
 	visit wikis_url
 end
 
+Then(/^a User should be a premium user$/) do
+  self.role = 'premium_user'
+end
 
 def attributize_string(string)
 	JSON.parse("{#{string}}")

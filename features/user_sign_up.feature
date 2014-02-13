@@ -5,6 +5,7 @@ Feature: As a user I should be able to sign up
 		When I go to the new_user_registration page
 		# And I fill in 'User Name' with 'testusername'
 		And I fill in 'Email' with 'test@email.com'
+		And I fill in 'Name' with 'testname'
 		And I fill in 'Password' with 'password'
 		And I fill in 'Password confirmation' with 'password'
 		And I click 'Sign up'

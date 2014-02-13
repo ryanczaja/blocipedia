@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :roles
   has_many :wikis
   before_create :set_member
 
@@ -14,6 +14,11 @@ class User < ActiveRecord::Base
   ROLES = %w[member premium_member moderator admin]
   def role?(base_role)
   	role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
+  end
+
+  def upgradeToPremium
+    self.role = 'premium_member'
+    self.update_attribute(:role, 'premium_member')
   end
 
   private

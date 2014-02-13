@@ -18,6 +18,8 @@ gem 'devise'
 gem 'redcarpet'
 gem 'faker'
 gem 'cancan'
+gem 'will_paginate', '~> 3.0'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 
 # Gems used only for assets and not required
