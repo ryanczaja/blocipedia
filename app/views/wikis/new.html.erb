@@ -1,11 +1,42 @@
 <h1>Create Wiki</h1>
 
-<%= form_for @wiki do |w| %>
-	<%= w.label :title %>
-	<%= w.text_field :title %>
-
-	<%= w.label :body %>
-	<%= w.text_area :body %>
-
-	<%= w.submit "Save" %>
-<% end %>
+<div class="row6">
+	<div class="span6">
+		<p>Guidelines for new topics:</p>
+		<ul>
+      <li>Make sure content is appropriate.</li>
+      <li>Please don't create duplicate Wiki Subjects</li>
+      <li>Create either a private or public Wiki at the end.</li>
+    </ul>
+	</div>
+	<div class="span6">
+		<%= form_for @wiki, html: {class: 'form-horizontal'} do |w| %>
+			<div class="control-group">
+				<%= w.label :title, class: 'control-label' %>
+				<div class="controls">
+					<%= w.text_field :title %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= w.label :body, class: 'control-label' %>
+				<div class="controls">
+					<%= w.text_area :body %>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<% if current_user.role == 'premium_member' || current_user.role == 'moderator' || current_user.role == 'admin' %>
+						<%= w.label :public, class: 'checkbox' do %>
+							<%= w.check_box :public %> Public Wiki
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<%= w.submit "Save", class: 'btn' %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

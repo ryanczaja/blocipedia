@@ -1,6 +1,7 @@
 class Wiki < ActiveRecord::Base
-  attr_accessible :body, :title, :name
+  attr_accessible :body, :title, :name, :public
   belongs_to :user
+  scope :visible_to, lambda {|user| user ? scoped : where(public: true)}
 
   #default_scope order('rank DESC')
 

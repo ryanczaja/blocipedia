@@ -17,8 +17,21 @@ rand(4..10).times do
 	end
 end
 
-u = User.first
-u.update_attributes(name: 'Cheese', email: 'ryanczaja@mac.com', password: 'mwklcdrf', password_confirmation: 'mwklcdrf')
+u = User.new(
+	name: 'Cheese',
+		email: 'ryanczaja@mac.com',
+		password: 'mwklcdrf',
+		password_confirmation: 'mwklcdrf')
+u.save
+u.update_attribute(:role, 'admin')
+
+u = User.new(
+	name: 'Cheese8967',
+		email: 'cheese8967@gmail.com',
+		password: 'mwklcdrf',
+		password_confirmation: 'mwklcdrf')
+u.save
+u.update_attribute(:role, 'member')
 
 puts "Seed finished"
 puts "#{User.count} users created"

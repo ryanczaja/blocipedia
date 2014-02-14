@@ -10,6 +10,7 @@ class Ability
 
     if user.role? :premium_member
         can :manage, Wiki, :user_id => user.id
+        can :read, Wiki
     end
 
     if user.role? :moderator
@@ -20,6 +21,6 @@ class Ability
         can :manage, :all
     end
 
-    can :read, :all
+    can :read, Wiki, public: true
   end
 end
