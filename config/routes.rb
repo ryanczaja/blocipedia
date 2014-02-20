@@ -1,10 +1,12 @@
 Blocipedia::Application.routes.draw do
 
-	get "wikis/index"
 
-	devise_for :users	
+	devise_for :users, controllers: {registrations: 'devise/registrations'}
+	resources :users, only: [:show]
 
-  resources :wikis
+  resources :wikis do
+  	resources :collaborators, :except => [:index, :show]
+  end
   resources :charges
 
   match "about" => 'welcome#about', via: :get

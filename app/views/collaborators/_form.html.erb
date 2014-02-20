@@ -1,0 +1,27 @@
+
+	
+	<div>
+		<table class="table table-bordered">
+			<caption><b>Table to give users access to this Wiki</b></caption>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>User Name's</th>
+					<th>Give Access</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @users.each do |u| %>
+				<%= form_for(:collaborator, :url => wiki_collaborators_path(@wiki), :method => :post) do |f| %>
+				<tr>
+					<td><%= u.id %></td>
+					<td><%= u.name %></td>
+					<td><%= f.check_box :user_id, u.id %> Access?</td>
+					<td><%= f.hidden_field :wiki_id, :value => params[:id] %>
+					<%= f.submit "Update Collaborations" %></td>
+				</tr>
+				<% end %>
+				<% end %>
+			</tbody>
+		</table>
+	</div>

@@ -5,6 +5,7 @@ class WikisController < ApplicationController
 
 	def new
 		@wiki = Wiki.new
+    @users = User.all
     authorize! :create, Wiki, message: "You need to be a member to create a new Wiki."
   end
 
@@ -27,6 +28,7 @@ class WikisController < ApplicationController
 
   def edit
   	@wiki = Wiki.find(params[:id])
+    @users = User.all
     authorize! :edit, @wiki, message: "You need to own the Wiki to edit it."
   end
 

@@ -14,18 +14,35 @@
 			<li> <a href="/wikis">Wikis</a> </li>
 		
 			<div class="pull-right user-info">
-					<a href="/users/sign_in">Sign In</a> or
-					<a href="/users/sign_up">Sign Up</a>
+					Hello <a href="/users/1">test@email.com</a>!
+					<a href="/users/edit" class="btn btn-mini">
+						<i class="icon-user"> </i>
+</a>					<a href="/users/sign_out" class="btn btn-mini" data-method="delete" label="Sign Out" rel="nofollow">
+						<i class="icon-share-alt"> </i>
+</a>							| <a href="/charges/new">Upgrade to Premium</a>?
 			</div>
 		</ul>
 
 
-		<div class="row">
-	<div class="span8">
-		<h1>Welcome to Blocipedia</h1>
-		<p>This is the home page for Blocipedia</p>
-	</div>
-</div>
+		<form accept-charset="UTF-8" action="/charges" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <article>
+    <label class="amount">
+      <span>Amount: $5.00</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key=""
+          data-name="Blocipedia"
+          data-description="Premium Membership Fee"
+          data-amount="500">
+  </script>
+
+<br /><br />
+Am I a Member = true<br />
+Am I a Premium Member = false
+
+</form>
 	</div>
 </body>
 </html>

@@ -10,3 +10,7 @@ end
 When(/^I click '([-_a-zA-Z\s]+)'$/) do |value|
   click_on value
 end
+
+When(/^I click on element with css selector ['"](.+)["']$/) do |value|
+  find(value).click
+end
