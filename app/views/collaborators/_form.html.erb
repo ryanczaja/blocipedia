@@ -1,5 +1,3 @@
-
-	
 	<div>
 		<table class="table table-bordered">
 			<caption><b>Table to give users access to this Wiki</b></caption>
@@ -8,19 +6,23 @@
 					<th>#</th>
 					<th>User Name's</th>
 					<th>Give Access</th>
+					<th>Update User's Access</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @users.each do |u| %>
-				<%= form_for(:collaborator, :url => wiki_collaborators_path(@wiki), :method => :post) do |f| %>
-				<tr>
-					<td><%= u.id %></td>
-					<td><%= u.name %></td>
-					<td><%= f.check_box :user_id, u.id %> Access?</td>
-					<td><%= f.hidden_field :wiki_id, :value => params[:id] %>
-					<%= f.submit "Update Collaborations" %></td>
-				</tr>
-				<% end %>
+					<%= form_for(:collaborator, :url => wiki_collaborators_path(@wiki), :method => :post) do |f| %>
+						<tr>
+							<td><%= u.id %></td>
+							<td><%= u.name %></td>
+							<td>
+								<%= check_box_tag :access, 1, checked(@wiki, u) %> Access?</td>
+							<td>
+								<%= f.hidden_field :user_id, :value => u.id %>
+									<%= f.submit "Update Collaboration" %>
+								</td>
+						</tr>
+					<% end %>
 				<% end %>
 			</tbody>
 		</table>

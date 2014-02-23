@@ -28,6 +28,7 @@ class WikisController < ApplicationController
 
   def edit
   	@wiki = Wiki.find(params[:id])
+    @collaborator = Wiki.find(params[:id])
     @users = User.all
     authorize! :edit, @wiki, message: "You need to own the Wiki to edit it."
   end

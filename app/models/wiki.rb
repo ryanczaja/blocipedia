@@ -1,7 +1,7 @@
 class Wiki < ActiveRecord::Base
   attr_accessible :body, :title, :name, :public
   belongs_to :user
-  #belongs_to :collaborators
+  belongs_to :collaborators
   scope :visible_to, lambda {|user| user ? scoped : where(public: true)}
 
   has_many :collaborators

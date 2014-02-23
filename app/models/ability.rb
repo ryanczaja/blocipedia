@@ -6,6 +6,8 @@ class Ability
 
     if user.role? :member
         can :manage, Wiki, :user_id => user.id
+        can :manage, Wiki, :collaborators => { :user_id => user.id }
+        can :read, Wiki
     end
 
     if user.role? :premium_member
